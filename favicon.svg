@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Flutter Termux guide">
+    <defs>
+        <linearGradient id="flBg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#47c5fb"/>
+            <stop offset="1" stop-color="#02569b"/>
+        </linearGradient>
+    </defs>
+    <rect width="64" height="64" rx="14" fill="url(#flBg)"/>
+    <g fill="#fff">
+        <path d="M42.09 5.6 15.66 32l8.14 8.14 34.5-34.51z"/>
+        <path d="M42.12 29.96 27.89 44.17 42.11 58.4h16.23L42.13 44.17l16.21-14.21z"/>
+    </g>
+</svg>

@@ -1,0 +1,33 @@
+{
+    "name": "Flutter on Termux",
+    "short_name": "Flutter Termux",
+    "description": "Build Flutter apps on your Android phone with Termux. No PC needed.",
+    "start_url": "./",
+    "scope": "./",
+    "display": "standalone",
+    "background_color": "#0d1117",
+    "theme_color": "#0d1117",
+    "lang": "en",
+    "dir": "ltr",
+    "categories": ["developer", "education", "productivity"],
+    "icons": [
+        {
+            "src": "assets/icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "assets/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        }
+    ]
+}

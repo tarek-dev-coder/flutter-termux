@@ -1,0 +1,6 @@
+# Local tooling (the site itself needs no build step)
+node_modules/
+dev.js
+.DS_Store
+Thumbs.db
+*.log

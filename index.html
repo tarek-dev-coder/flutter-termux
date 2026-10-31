@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" class="dark" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark light">
+    <title>Flutter on Termux: build apps on your phone</title>
+
+    <meta name="description" content="Free 7-step guide to install Flutter and the Android SDK in Termux, connect ADB over Wi-Fi, and build Flutter apps directly on your Android phone. No computer needed. English, French, and Arabic.">
+    <meta name="keywords" content="flutter on termux, flutter android termux, build flutter apps on phone, flutter without pc, termux flutter setup, android ide termux, flutter mobile development, termux android sdk, hello world flutter termux">
+    <meta name="author" content="tarek-dev-coder">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#0d1117">
+    <meta name="application-name" content="Flutter on Termux">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <script>
+        // Apply the saved theme and language before the first paint, so a light-theme
+        // or Arabic visitor doesn't see a dark flash or left-to-right flash.
+        (function () {
+            try {
+                var root = document.documentElement;
+                var theme = localStorage.getItem('flutter_theme');
+                root.classList.toggle('dark', theme !== 'light');
+                var themeMeta = document.querySelector('meta[name="theme-color"]');
+                if (theme === 'light' && themeMeta) {
+                    themeMeta.setAttribute('content', '#f6f8fa');
+                }
+                var lang = localStorage.getItem('flutter_lang');
+                if (lang === 'ar') {
+                    root.lang = 'ar';
+                    root.dir = 'rtl';
+                } else if (lang === 'fr') {
+                    root.lang = 'fr';
+                }
+            } catch (e) {
+                // Storage can be blocked; the defaults in the markup still work.
+            }
+        })();
+    </script>
+
+    <link rel="canonical" href="https://tarek-dev-coder.github.io/flutter-termux/">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="sitemap.xml">
+    <link rel="me" href="https://github.com/tarek-dev-coder">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/icons/icon-180.png">
+    <link rel="manifest" href="manifest.webmanifest">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Flutter on Termux">
+    <meta property="og:title" content="Flutter on Termux: build apps on your phone">
+    <meta property="og:description" content="Install Flutter and the Android SDK in Termux, connect ADB over Wi-Fi, and run apps on your phone. No PC needed.">
+    <meta property="og:url" content="https://tarek-dev-coder.github.io/flutter-termux/">
+    <meta property="og:image" content="https://tarek-dev-coder.github.io/flutter-termux/assets/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Flutter on Termux: build Flutter apps on your phone, no PC needed">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="ar_AR">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Flutter on Termux: build apps on your phone">
+    <meta name="twitter:description" content="Install Flutter and the Android SDK in Termux, connect ADB over Wi-Fi, and run apps on your phone. No PC needed.">
+    <meta name="twitter:image" content="https://tarek-dev-coder.github.io/flutter-termux/assets/og-image.png">
+    <meta name="twitter:image:alt" content="Flutter on Termux guide">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" id="hljs-theme">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/guide.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://tarek-dev-coder.github.io/flutter-termux/#website",
+                "url": "https://tarek-dev-coder.github.io/flutter-termux/",
+                "name": "Flutter on Termux",
+                "description": "Build Flutter apps on your Android phone with Termux. No computer needed.",
+                "inLanguage": ["en", "fr", "ar"],
+                "publisher": {
+                    "@type": "Person",
+                    "name": "tarek-dev-coder",
+                    "url": "https://github.com/tarek-dev-coder"
+                }
+            },
+            {
+                "@type": "HowTo",
+                "@id": "https://tarek-dev-coder.github.io/flutter-termux/#howto",
+                "name": "Build Flutter apps on your Android phone with Termux",
+                "description": "Install Flutter and the Android SDK in Termux, pair your phone with wireless debugging, and run a Flutter app without a computer.",
+                "image": "https://tarek-dev-coder.github.io/flutter-termux/assets/og-image.png",
+                "totalTime": "PT2H",
+                "estimatedCost": {
+                    "@type": "MonetaryAmount",
+                    "currency": "USD",
+                    "value": "0"
+                },
+                "tool": [
+                    { "@type": "HowToTool", "name": "Android phone (Android 11 or newer)" },
+                    { "@type": "HowToTool", "name": "Termux" },
+                    { "@type": "HowToTool", "name": "Termux:API" }
+                ],
+                "step": [
+                    { "@type": "HowToStep", "name": "Get the apps", "text": "Install Termux and Termux:API from F-Droid." },
+                    { "@type": "HowToStep", "name": "Install the tools", "text": "Add the termuxvoid repo and install Flutter, the Android SDK, the NDK, and CMake." },
+                    { "@type": "HowToStep", "name": "Pair your phone", "text": "Turn on wireless debugging and pair the phone with itself." },
+                    { "@type": "HowToStep", "name": "Connect and keep Termux awake", "text": "Connect ADB, disable the phantom process killer, and run termux-wake-lock." },
+                    { "@type": "HowToStep", "name": "Set up Flutter", "text": "Point Flutter at the Termux Android SDK and accept the Android licenses." },
+                    { "@type": "HowToStep", "name": "Create and configure the app", "text": "Create hello_world and point Gradle at the Termux SDK, NDK, CMake, and aapt2." },
+                    { "@type": "HowToStep", "name": "Run hello_world", "text": "Run flutter run on the phone." }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Screenshot preview">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close screenshot">&times;</button>
+        <img id="lightbox-img" alt="">
+    </div>
+
+    <div id="language-modal" class="hidden" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="language-title">
+        <div class="lang-title" id="language-title">Choose your language / Choisissez votre langue / اختر لغتك</div>
+        <div class="lang-grid">
+            <button class="lang-btn" data-lang="en" aria-label="English">
+                <span class="flag"><svg viewBox="0 0 19 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><rect width="19" height="10" fill="#fff"/><rect y="0" width="19" height="0.769" fill="#B22234"/><rect y="1.538" width="19" height="0.769" fill="#B22234"/><rect y="3.077" width="19" height="0.769" fill="#B22234"/><rect y="4.615" width="19" height="0.769" fill="#B22234"/><rect y="6.154" width="19" height="0.769" fill="#B22234"/><rect y="7.692" width="19" height="0.769" fill="#B22234"/><rect y="9.231" width="19" height="0.769" fill="#B22234"/><rect width="7.6" height="5.385" fill="#3C3B6E"/><g fill="#fff"><polygon points="1.27,0.3 1.4,0.7 1.0,0.45 1.54,0.45 1.14,0.7"/><polygon points="2.8,0.3 2.93,0.7 2.53,0.45 3.07,0.45 2.67,0.7"/><polygon points="4.33,0.3 4.46,0.7 4.06,0.45 4.6,0.45 4.2,0.7"/><polygon points="1.27,1.4 1.4,1.8 1.0,1.55 1.54,1.55 1.14,1.8"/><polygon points="2.8,1.4 2.93,1.8 2.53,1.55 3.07,1.55 2.67,1.8"/><polygon points="4.33,1.4 4.46,1.8 4.06,1.55 4.6,1.55 4.2,1.8"/></g></svg></span> English
+            </button>
+            <button class="lang-btn" data-lang="fr" aria-label="Français">
+                <span class="flag"><svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg></span> Français
+            </button>
+            <button class="lang-btn" data-lang="ar" aria-label="العربية">
+                <span class="flag"><svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><rect width="3" height="2" fill="#006C35"/><text x="1.5" y="0.85" text-anchor="middle" font-size="0.32" fill="#fff" font-family="'Cairo','Segoe UI',sans-serif">لا إله إلا الله</text><text x="1.5" y="1.2" text-anchor="middle" font-size="0.26" fill="#fff" font-family="'Cairo','Segoe UI',sans-serif">محمد رسول الله</text><path d="M0.4 1.55 L2.6 1.55 L2.45 1.45 L0.55 1.45 Z" fill="#fff"/></svg></span> العربية
+            </button>
+        </div>
+    </div>
+
+    <header>
+        <a href="#" class="logo" id="logo-btn">📱 Flutter <span class="brand">Termux</span><span class="sr-only" id="logo-action"> Change language</span></a>
+        <div class="header-controls">
+            <a href="https://github.com/tarek-dev-coder" target="_blank" rel="me noopener noreferrer" class="icon-btn github-link" title="GitHub profile" aria-label="GitHub profile">
+                <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor" style="display: block;" aria-hidden="true">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+            <button class="icon-btn" id="btn-lang"><span id="btn-lang-text">🌐 EN</span><span class="sr-only" id="btn-lang-action"> Change language</span></button>
+            <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">☀️</button>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="progress-fill" id="progress-bar"></div>
+    </div>
+    <div class="step-indicator" id="step-indicator" aria-live="polite"></div>
+
+    <main>
+        <h1 class="sr-only">Build Flutter apps on your Android phone with Termux, no PC needed</h1>
+        <p class="sr-only">A free 7-step guide to install Flutter and the Android SDK in Termux, connect ADB over Wi-Fi, and run a Flutter app directly on your phone. Available in English, French, and Arabic.</p>
+        <div class="wizard-wrapper" id="wizard-content"></div>
+    </main>
+
+    <noscript>
+        <style>#language-modal { display: none; }</style>
+        <div class="wizard-wrapper">
+            <div class="step-content active">
+                <h2>Flutter on Termux</h2>
+                <p>Build Flutter apps on your Android phone. No PC needed. Enable JavaScript for the interactive 7-step guide.</p>
+                <ol>
+                    <li>Install Termux and Termux:API from F-Droid.</li>
+                    <li>Install Flutter, the Android SDK, the NDK, and CMake.</li>
+                    <li>Pair your phone with wireless debugging.</li>
+                    <li>Connect ADB and keep Termux awake.</li>
+                    <li>Point Flutter at the Termux SDK and accept the licenses.</li>
+                    <li>Create hello_world and configure Gradle.</li>
+                    <li>Build and run hello_world.</li>
+                </ol>
+            </div>
+        </div>
+    </noscript>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/dart.min.js"></script>
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
