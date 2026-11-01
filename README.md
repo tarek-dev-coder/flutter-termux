@@ -4,6 +4,16 @@ Build Flutter apps on your phone. No PC needed. This 7-step guide covers setup i
 
 Everything happens on the Android phone itself: SDK setup, building, and running. It works even if your computer is old or you don't have one.
 
+## One-run Termux setup (ultra beginners)
+
+If you'd rather not follow the steps manually, run this single command **inside Termux**:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/tarek-dev-coder/flutter-termux/master/setup.sh | bash
+```
+
+It installs the TermuxVoid repo, Flutter, the Android SDK/NDK/CMake, configures Gradle, and creates `~/hello_world`. You still need to pair your phone (wireless debugging) — the script prints those steps at the end.
+
 ## Run locally
 
 Use a static server. ES modules do not load over `file://`.
