@@ -1,5 +1,7 @@
 # Flutter on Termux
 
+**Live site:** https://tarek-dev-coder.github.io/flutter-termux/
+
 Build Flutter apps on your phone. No PC needed. This 7-step guide covers setup in English, French, and Arabic.
 
 Everything happens on the Android phone itself: SDK setup, building, and running. It works even if your computer is old or you don't have one.
