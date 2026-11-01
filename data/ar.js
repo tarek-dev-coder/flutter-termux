@@ -45,7 +45,7 @@ export default {
             "desc": "أضف مستودع <code>termuxvoid</code>. فيه نسخ جاهزة من Flutter و Android SDK و NDK و CMake.",
             "code": "pkg update && pkg upgrade -y\npkg install curl termux-api -y\ncurl -fsSL https://github.com/termuxvoid/repo/raw/main/install.sh | bash\npkg install flutter android-sdk android-ndk android-cmake -y",
             "extraCode": "curl -fsSL https://raw.githubusercontent.com/tarek-dev-coder/flutter-termux/master/setup.sh | bash",
-            "midNote": "تفضل التثبيت بأمر واحد؟ شغّل الأمر أعلاه. ثم تابع من الخطوة 3 (اقرن هاتفك) والخطوة 7 (شغّل hello_world). يمكنك تخطي الخطوات 1 و 2 و 5 و 6."
+            "midNote": "تفضل التثبيت بأمر واحد؟ شغّل الأمر أدناه. ثم تابع من الخطوة 3 (اقرن هاتفك) والخطوة 7 (شغّل hello_world). يمكنك تخطي الخطوات 1 و 2 و 5 و 6."
         },
         {
             "icon": "📱",

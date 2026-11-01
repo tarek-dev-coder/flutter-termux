@@ -45,7 +45,7 @@ export default {
             "desc": "Add the <code>termuxvoid</code> repo. It has ready-made Flutter, Android SDK, NDK, and CMake builds.",
             "code": "pkg update && pkg upgrade -y\npkg install curl termux-api -y\ncurl -fsSL https://github.com/termuxvoid/repo/raw/main/install.sh | bash\npkg install flutter android-sdk android-ndk android-cmake -y",
             "extraCode": "curl -fsSL https://raw.githubusercontent.com/tarek-dev-coder/flutter-termux/master/setup.sh | bash",
-            "midNote": "Prefer a one-run setup? Run the command above. Then continue from step 3 (Pair your phone) and step 7 (Run hello_world). You can skip steps 1, 2, 5, and 6."
+            "midNote": "Prefer a one-run setup? Run the command below. Then continue from step 3 (Pair your phone) and step 7 (Run hello_world). You can skip steps 1, 2, 5, and 6."
         },
         {
             "icon": "📱",
