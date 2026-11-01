@@ -1,5 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
-# setup.sh — one-run Termux setup for Flutter on Android.
+# setup.sh - one-run Termux setup for Flutter on Android.
 # Usage:  bash setup.sh   (or: curl -fsSL <url> | bash)
 # Does everything except device pairing (which needs your phone's IP/port).
 set -e
@@ -9,9 +9,9 @@ PREFIX="${PREFIX:-/data/data/com.termux/files/usr}"
 echo "==> Adding the TermuxVoid repository..."
 curl -fsSL https://github.com/termuxvoid/repo/raw/main/install.sh | bash
 
-echo "==> Installing Flutter, Android SDK, NDK, and CMake..."
-pkg update
-pkg install -y flutter android-sdk android-ndk android-cmake
+echo "==> Installing Flutter, Android SDK, NDK, CMake, and Termux:API..."
+pkg update -y
+pkg install -y flutter android-sdk android-ndk android-cmake termux-api
 
 echo "==> Configuring Flutter..."
 flutter config --android-sdk "$PREFIX/opt/android-sdk"
@@ -20,7 +20,11 @@ flutter doctor -v
 
 echo "==> Creating hello_world project..."
 cd ~
-flutter create hello_world
+if [ -d "hello_world" ]; then
+    echo "  hello_world already exists; reusing it."
+else
+    flutter create hello_world
+fi
 cd hello_world
 
 echo "==> Configuring Gradle for Termux..."
