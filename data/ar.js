@@ -42,9 +42,10 @@ export default {
         {
             "icon": "📦",
             "title": "2. ثبّت الأدوات",
-            "desc": "أضف مستودع <code>termuxvoid</code>. فيه نسخ جاهزة من Flutter و Android SDK و NDK و CMake.<br><br><strong>مبتدئ؟</strong> تفضل التثبيت بأمر واحد؟ شغّل الأمر أدناه في Termux بدلاً من الخطوات أدناه.",
+            "desc": "أضف مستودع <code>termuxvoid</code>. فيه نسخ جاهزة من Flutter و Android SDK و NDK و CMake.",
             "code": "pkg update && pkg upgrade -y\npkg install curl termux-api -y\ncurl -fsSL https://github.com/termuxvoid/repo/raw/main/install.sh | bash\npkg install flutter android-sdk android-ndk android-cmake -y",
-            "extraCode": "curl -fsSL https://raw.githubusercontent.com/tarek-dev-coder/flutter-termux/master/setup.sh | bash"
+            "extraCode": "curl -fsSL https://raw.githubusercontent.com/tarek-dev-coder/flutter-termux/master/setup.sh | bash",
+            "midNote": "<strong>مبتدئ؟</strong> تفضل التثبيت بأمر واحد؟ شغّل الأمر أدناه في Termux بدلاً من الخطوات أعلاه."
         },
         {
             "icon": "📱",

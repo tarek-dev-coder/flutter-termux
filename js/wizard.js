@@ -28,6 +28,9 @@ function renderCode(stepData, langData) {
         <button class="copy-btn" id="btn-copy" type="button">${langData.copyText}</button>
         <pre><code class="language-bash" id="code-block">${escapeHtml(stepData.code)}</code></pre>
     </div>`;
+    if (stepData.midNote) {
+        html += `<p class="step-desc mid-note">${stepData.midNote}</p>`;
+    }
     if (stepData.extraCode) {
         html += `<div class="code-wrapper">
             <div class="lang-tag">BASH</div>

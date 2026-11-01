@@ -303,6 +303,7 @@ html[dir="rtl"] .btn-primary:hover { transform: translateX(-4px); }
 .snippet-wrapper { margin: 0 0 20px; }
 .snippet-title { font-size: 1.1rem; font-weight: 600; margin: 0 0 12px; color: var(--text); }
 .snippet-note { font-size: 13px; color: var(--text-muted); margin: 10px 0 0; line-height: 1.5; overflow-wrap: break-word; }
+.mid-note { margin: 20px 0 10px; }
 .snippet-block { margin: 0; }
 
 .checkmark {
