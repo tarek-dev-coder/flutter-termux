@@ -23,11 +23,19 @@ function renderLinks(stepData) {
 }
 
 function renderCode(stepData, langData) {
-    return `<div class="code-wrapper">
+    let html = `<div class="code-wrapper">
         <div class="lang-tag">BASH</div>
         <button class="copy-btn" id="btn-copy" type="button">${langData.copyText}</button>
         <pre><code class="language-bash" id="code-block">${escapeHtml(stepData.code)}</code></pre>
     </div>`;
+    if (stepData.extraCode) {
+        html += `<div class="code-wrapper">
+            <div class="lang-tag">BASH</div>
+            <button class="copy-btn" id="btn-copy-extra" type="button">${langData.copyText}</button>
+            <pre><code class="language-bash" id="code-block-extra">${escapeHtml(stepData.extraCode)}</code></pre>
+        </div>`;
+    }
+    return html;
 }
 
 function renderImage(image) {
@@ -86,26 +94,46 @@ async function copyToClipboard(text) {
 function bindCopyButton(langData) {
     const button = document.getElementById('btn-copy');
     const code = document.getElementById('code-block');
-    if (!button || !code) return;
-
-    let resetTimer;
-
-    button.addEventListener('click', async () => {
-        clearTimeout(resetTimer);
+    if (button && code) {
+        let resetTimer;
+        button.addEventListener('click', async () => {
+            clearTimeout(resetTimer);
+            try {
+                await copyToClipboard(code.textContent);
+                button.textContent = langData.copiedText;
+                showToast(langData.copiedText);
+                resetTimer = setTimeout(() => { button.textContent = langData.copyText; }, 2000);
+            } catch {
+                showToast(langData.copyFailText);
+            }
+        });
         try {
-            await copyToClipboard(code.textContent);
-            button.textContent = langData.copiedText;
-            showToast(langData.copiedText);
-            resetTimer = setTimeout(() => { button.textContent = langData.copyText; }, 2000);
+            window.hljs?.highlightElement(code);
         } catch {
-            showToast(langData.copyFailText);
+            // Highlighting is optional.
         }
-    });
+    }
 
-    try {
-        window.hljs?.highlightElement(code);
-    } catch {
-        // Highlighting is optional.
+    const extraButton = document.getElementById('btn-copy-extra');
+    const extraCode = document.getElementById('code-block-extra');
+    if (extraButton && extraCode) {
+        let extraResetTimer;
+        extraButton.addEventListener('click', async () => {
+            clearTimeout(extraResetTimer);
+            try {
+                await copyToClipboard(extraCode.textContent);
+                extraButton.textContent = langData.copiedText;
+                showToast(langData.copiedText);
+                extraResetTimer = setTimeout(() => { extraButton.textContent = langData.copyText; }, 2000);
+            } catch {
+                showToast(langData.copyFailText);
+            }
+        });
+        try {
+            window.hljs?.highlightElement(extraCode);
+        } catch {
+            // Highlighting is optional.
+        }
     }
 }
 
