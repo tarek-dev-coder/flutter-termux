@@ -64,7 +64,7 @@ export default {
         {
             "icon": "🔌",
             "title": "4. اتصل وأبقِ Termux مستيقظاً",
-            "desc": "اتصل بالمنفذ <strong>الرئيسي</strong>. أوقف أندرويد عن قتل البناء، ثم أبقِ Termux مستيقظاً.<br><br><strong>نصيحة:</strong> هل قرنت من قبل؟ تخطَّ الخطوة 5 وشغّل <code>adb connect</code>. ظهرت <strong>\"Unauthorized\"</strong> أو <strong>\"Connection refused\"</strong>؟ أقرن من جديد وتحقق من المنفذ تحت <em>IP address &amp; Port</em>.",
+            "desc": "اتصل بالمنفذ <strong>الرئيسي</strong>. أوقف أندرويد عن قتل البناء، ثم أبقِ Termux مستيقظاً.<br><br><strong>نصيحة:</strong> هل قرنت من قبل؟ تخطَّ الخطوة 3 وشغّل <code>adb connect</code>. ظهرت <strong>\"Unauthorized\"</strong> أو <strong>\"Connection refused\"</strong>؟ أقرن من جديد وتحقق من المنفذ تحت <em>IP address &amp; Port</em>.",
             "images": [
                 {
                     "src": "assets/screenshots/step-6/connect-stabilize.png",

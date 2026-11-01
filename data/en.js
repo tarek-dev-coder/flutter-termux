@@ -64,7 +64,7 @@ export default {
         {
             "icon": "🔌",
             "title": "4. Connect and keep Termux awake",
-            "desc": "Connect with the <strong>main</strong> port. Stop Android from killing the build, then keep Termux awake.<br><br><strong>Tip:</strong> Already paired? Skip step 5 and run <code>adb connect</code>. Seeing <strong>\"Unauthorized\"</strong> or <strong>\"Connection refused\"</strong>? Pair again and check the port under <em>IP address &amp; Port</em>.",
+            "desc": "Connect with the <strong>main</strong> port. Stop Android from killing the build, then keep Termux awake.<br><br><strong>Tip:</strong> Already paired? Skip step 3 and run <code>adb connect</code>. Seeing <strong>\"Unauthorized\"</strong> or <strong>\"Connection refused\"</strong>? Pair again and check the port under <em>IP address &amp; Port</em>.",
             "images": [
                 {
                     "src": "assets/screenshots/step-6/connect-stabilize.png",

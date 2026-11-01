@@ -64,7 +64,7 @@ export default {
         {
             "icon": "🔌",
             "title": "4. Connectez et gardez Termux éveillé",
-            "desc": "Connectez-vous avec le <strong>port principal</strong>. Empêchez Android de tuer la compilation, puis gardez Termux éveillé.<br><br><strong>Conseil :</strong> Déjà associé ? Sautez l'étape 5 et lancez <code>adb connect</code>. <strong>\"Unauthorized\"</strong> ou <strong>\"Connection refused\"</strong> ? Réassociez et vérifiez le port sous <em>IP address &amp; Port</em>.",
+            "desc": "Connectez-vous avec le <strong>port principal</strong>. Empêchez Android de tuer la compilation, puis gardez Termux éveillé.<br><br><strong>Conseil :</strong> Déjà associé ? Sautez l'étape 3 et lancez <code>adb connect</code>. <strong>\"Unauthorized\"</strong> ou <strong>\"Connection refused\"</strong> ? Réassociez et vérifiez le port sous <em>IP address &amp; Port</em>.",
             "images": [
                 {
                     "src": "assets/screenshots/step-6/connect-stabilize.png",
