@@ -303,7 +303,16 @@ html[dir="rtl"] .btn-primary:hover { transform: translateX(-4px); }
 .snippet-wrapper { margin: 0 0 20px; }
 .snippet-title { font-size: 1.1rem; font-weight: 600; margin: 0 0 12px; color: var(--text); }
 .snippet-note { font-size: 13px; color: var(--text-muted); margin: 10px 0 0; line-height: 1.5; overflow-wrap: break-word; }
-.mid-note { margin: 20px 0 10px; }
+.mid-note {
+    margin: 20px 0 10px;
+    padding: 12px 16px;
+    border-left: 3px solid var(--accent);
+    background: var(--code-bg);
+    border-radius: 0 8px 8px 0;
+    font-size: 15px;
+    line-height: 1.5;
+}
+html[dir="rtl"] .mid-note { border-left: none; border-right: 3px solid var(--accent); border-radius: 8px 0 0 8px; }
 .snippet-block { margin: 0; }
 
 .checkmark {
